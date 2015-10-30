@@ -40,6 +40,17 @@ public class NestedLoops
         int i2 = 1; 
         do 
         { 
+            do
+            {
+                System.out.println(i + " " + i2);
+                i2++;
+            }
+            while (i2 <= limit2);
             
-    
+            i++;
+            i2 = 1;
+        }
+        while (i <= limit1);
+    }
+
 }
