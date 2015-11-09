@@ -27,6 +27,7 @@ public class FindFirstClass
             position = -1;
         }
         
+        return position;
     }
 }
         

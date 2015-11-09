@@ -31,12 +31,6 @@ public class Diamond
             System.out.println();
         }
         
-        for ( int row = length -2; 
-        row >= 0 ; 
-        row-- 
-        { 
-            for ( int spaces = 0 ; 
-            s[aces < sideLength 
-        }
+    }
 }
             

@@ -16,7 +16,7 @@ public class PromptUntillMatch
             input = scan.nextDouble();
             if (input>0 && input <100)
             { 
-                value = true;
+                valid = true;
             }
         }
         while (!valid);
