@@ -19,6 +19,7 @@ public class Fibonacci
         }
         
         System.out.print(foldn);
+        System.out.print("❃");
     }
 }
             

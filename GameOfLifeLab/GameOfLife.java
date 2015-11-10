@@ -1,6 +1,6 @@
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Rock;
+import info.gridworld.actor.Flower;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
@@ -17,9 +17,9 @@ public class GameOfLife
     // the world comprised of the grid that displays the graphics for the game
     private ActorWorld world;
     
-    // the game board will have 5 rows and 5 columns
-    private final int ROWS = 5;
-    private final int COLS = 5;
+    // the game board will have 6 rows and 6 columns
+    private final int ROWS = 6;
+    private final int COLS = 6;
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -53,26 +53,36 @@ public class GameOfLife
     private void populateGame()
     {
         // constants for the location of the three cells initially alive
-        final int X1 = 2, Y1 = 0;
-        final int X2 = 0, Y2 = 2;
-        final int X3 = 1, Y3 = 2;
-
+        final int X1 = 1, Y1 = 1;
+        final int X2 = 2, Y2 = 2;
+        final int X3 = 3, Y3 = 2;
+        final int X4 = 1, Y4 = 3;
+        final int X5 = 4, Y5 = 4;
+        
         // the grid of Actors that maintains the state of the game
         //  (alive cells contains actors; dead cells do not)
         Grid<Actor> grid = world.getGrid();
         
-        // create and add rocks (a type of Actor) to the three intial locations
-        Rock rock1 = new Rock();
+        // create and add flocwers (a type of Actor) to the five locations
+        Flower flower1 = new Flower();
         Location loc1 = new Location(Y1, X1);
-        grid.put(loc1, rock1);
+        grid.put(loc1, flower1);
         
-        Rock rock2 = new Rock();
+        Flower flower2 = new Flower();
         Location loc2 = new Location(Y2, X2);
-        grid.put(loc2, rock2);
+        grid.put(loc2, flower2);
         
-        Rock rock3 = new Rock();
+        Flower flower3 = new Flower();
         Location loc3 = new Location(Y3, X3);
-        grid.put(loc3, rock3);
+        grid.put(loc3, flower3);
+        
+        Flower flower4 = new Flower();
+        Location loc4 = new Location(Y4, X4);
+        grid.put(loc4, flower4);
+        
+        Flower flower5 = new Flower();
+        Location loc5 = new Location(Y5, X5);
+        grid.put(loc5, flower5);
     }
 
     /**
