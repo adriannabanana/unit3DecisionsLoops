@@ -4,6 +4,11 @@ import info.gridworld.actor.Flower;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
+import java.util.ArrayList;
+
+//http://www.greenteapress.com/thinkapjava/html/thinkjava018.html
+//http://apcentral.collegeboard.com/apc/members/repository/ap07_gridworld_casestudy_3.pdf
+//http://apcentral.collegeboard.com/apc/public/repository/ap_comp_sci_a_quick_reference.pdf
 
 /**
  * Game of Life starter code. Demonstrates how to create and populate the game using the GridWorld framework.
@@ -85,6 +90,7 @@ public class GameOfLife
         grid.put(loc5, flower5);
     }
 
+    
     /**
      * Generates the next generation based on the rules of the Game of Life and updates the grid
      * associated with the world
@@ -93,7 +99,7 @@ public class GameOfLife
      * @post    the world has been populated with a new grid containing the next generation
      * 
      */
-    private void createNextGeneration()
+    public void createNextGeneration()
     {
         /** You will need to read the documentation for the World, Grid, and Location classes
          *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
@@ -103,6 +109,33 @@ public class GameOfLife
         Grid<Actor> grid = world.getGrid();
         
         // insert magic here...
+        if (grid == null)
+        {
+            Location loc = getLocation();
+            ArrayList<Actor> neighbors = grid.getNeighbors(loc);
+            Flower newFlower = new Flower();
+            if (neighbors.size() == 3)
+            {
+                grid.put(loc, newFlower);
+            }
+        }
+        
+        if (grid != null)
+        {
+            Location loc = getLocation();
+            ArrayList<Actor> neighbors = grid.getNeighbors(loc);
+            Flower newFlower = new Flower();
+            if (neighbors.size() == 3 || neighbors.size() == 4)
+            {
+                grid.put(newFlower);
+            }
+            else
+            {
+                grid.remove(loc);
+            }
+        }
+            
+        
         
     }
     
@@ -114,12 +147,15 @@ public class GameOfLife
      * @pre     the grid has been created
      * @return  the actor at the specified row and column
      */
+    
     public Actor getActor(int row, int col)
     {
         Location loc = new Location(row, col);
         Actor actor = world.getGrid().get(loc);
         return actor;
     }
+    
+    
 
     /**
      * Returns the number of rows in the game board
