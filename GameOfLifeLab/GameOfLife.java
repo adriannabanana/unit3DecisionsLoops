@@ -111,7 +111,7 @@ public class GameOfLife
         // insert magic here...
         if (grid == null)
         {
-            Location loc = getLocation();
+            Location loc = grid.getLocation();
             ArrayList<Actor> neighbors = grid.getNeighbors(loc);
             Flower newFlower = new Flower();
             if (neighbors.size() == 3)
@@ -122,7 +122,7 @@ public class GameOfLife
         
         if (grid != null)
         {
-            Location loc = getLocation();
+            Location loc = grid.getLocation();
             ArrayList<Actor> neighbors = grid.getNeighbors(loc);
             Flower newFlower = new Flower();
             if (neighbors.size() == 3 || neighbors.size() == 4)
@@ -134,9 +134,7 @@ public class GameOfLife
                 grid.remove(loc);
             }
         }
-            
-        
-        
+
     }
     
     /**
