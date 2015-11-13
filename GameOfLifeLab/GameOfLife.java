@@ -23,8 +23,8 @@ public class GameOfLife
     private ActorWorld world;
     
     // the game board will have 6 rows and 6 columns
-    private final int ROWS = 6;
-    private final int COLS = 6;
+    private final int ROWS = 10;
+    private final int COLS = 10;
     
     /**
      * Default constructor for objects of class GameOfLife
@@ -107,34 +107,41 @@ public class GameOfLife
         
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
-        
+        Grid<Actor> grid2 = world.getGrid();
         // insert magic here...
-        if (grid == null)
-        {
-            Location loc = grid.getLocation();
-            ArrayList<Actor> neighbors = grid.getNeighbors(loc);
-            Flower newFlower = new Flower();
-            if (neighbors.size() == 3)
-            {
-                grid.put(loc, newFlower);
-            }
-        }
         
-        if (grid != null)
+        
+        for(int row = 0; row < ROWS; row++)
         {
-            Location loc = grid.getLocation();
-            ArrayList<Actor> neighbors = grid.getNeighbors(loc);
-            Flower newFlower = new Flower();
-            if (neighbors.size() == 3 || neighbors.size() == 4)
+            for(int col = 0; col < COLS; col++)
             {
-                grid.put(newFlower);
-            }
-            else
-            {
-                grid.remove(loc);
+                Actor cell = this.getActor(row, col);
+                Location loc = cell.getLocation();
+                ArrayList<Actor> neighbors = grid.getNeighbors(loc);
+                if (cell == null)
+                {
+                    Flower newFlower = new Flower();
+                    if (neighbors.size() == 3)
+                    {
+                        grid2.put(loc, newFlower);
+                    }
+                }
+                else
+                {
+                    Flower newFlower = new Flower();
+                    if (neighbors.size() == 3 || neighbors.size() == 4)
+                    {
+                        grid2.put(loc,newFlower);
+                    }
+                    else
+                    {
+                        //grid2.remove(loc);
+                    }
+                }
+                
             }
         }
-
+        world.setGrid(grid2);
     }
     
     /**
@@ -183,6 +190,7 @@ public class GameOfLife
     public static void main(String[] args)
     {
         GameOfLife game = new GameOfLife();
+        
     }
 
 }
