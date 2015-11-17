@@ -107,7 +107,8 @@ public class GameOfLife
         
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
-        Grid<Actor> grid2 = world.getGrid();
+        BoundedGrid<Actor> grid2 = new BoundedGrid<Actor>(ROWS, COLS);
+
         // insert magic here...
         
         
@@ -115,8 +116,10 @@ public class GameOfLife
         {
             for(int col = 0; col < COLS; col++)
             {
+
+
                 Actor cell = this.getActor(row, col);
-                Location loc = cell.getLocation();
+                Location loc = new Location(row,col);
                 ArrayList<Actor> neighbors = grid.getNeighbors(loc);
                 if (cell == null)
                 {
@@ -187,10 +190,14 @@ public class GameOfLife
      * Creates an instance of this class. Provides convenient execution.
      *
      */
-    public static void main(String[] args)
+    public static void main(String[] args) throws InterruptedException
     {
         GameOfLife game = new GameOfLife();
-        
+        for(int i = 0; i < 300; i++)
+        {
+            Thread.sleep(500);
+            game.createNextGeneration();
+        }
     }
 
 }
