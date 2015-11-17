@@ -80,14 +80,14 @@ Submission:
 
 
 
-* how large is the grid? is it boundless? 30x30
-* what do live cells look like? ☺
-* what do dead cells look like? ☻
+* how large is the grid? is it boundless? 10x10
+* what do live cells look like? x (flowers)
+* what do dead cells look like? -
 * what pattern is displayed? are multiple patterns available? are patterns chosen in code, chosen randomly, or chosen by user?
     * pattern chosen in code
 * how long does the game run? does it run forever? does it prompt the user to continue?
-    * prompts user to continue
+    * runs for 300 generations
 * what is the time interval between generations?
-    * depends on user
+    * half a second 
 * what about edge cases? does it wrap around?
     * doesn't wrap around

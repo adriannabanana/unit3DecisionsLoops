@@ -116,8 +116,6 @@ public class GameOfLife
         {
             for(int col = 0; col < COLS; col++)
             {
-
-
                 Actor cell = this.getActor(row, col);
                 Location loc = new Location(row,col);
                 ArrayList<Actor> neighbors = grid.getNeighbors(loc);
@@ -132,7 +130,7 @@ public class GameOfLife
                 else
                 {
                     Flower newFlower = new Flower();
-                    if (neighbors.size() == 3 || neighbors.size() == 4)
+                    if (neighbors.size() == 3 || neighbors.size() == 2)
                     {
                         grid2.put(loc,newFlower);
                     }
